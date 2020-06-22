@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -15,6 +15,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import { TextField } from "formik-material-ui";
 import { Form, Field, Formik } from "formik";
 import * as Yup from "yup";
+import { userLogin } from "../api/user";
+import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,23 +52,33 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const initialValues = {
-  email: "",
-  password: "",
-};
-const onSubmit = (values, submitPros) => {
-  console.log("form data", values);
-  console.log("submit Pros", submitPros);
-};
-
-const validationSchema = Yup.object({
-  email: Yup.string().email("Invalid email format").required("Required"),
-  password: Yup.string().required("Required"),
-});
-
-export default function SignInSide() {
+export default function Login() {
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const classes = useStyles();
 
+  const initialValues = {
+    email: "",
+    password: "",
+  };
+  const onSubmit = async (values, submitPros) => {
+    console.log("form data", values);
+    console.log("submit Pros", submitPros);
+
+    const {
+      data: { token },
+    } = await axios.post("http://localhost:3001/users/login/admin", values);
+    setIsLoggedIn(false);
+    localStorage.setItem("token", token);
+  };
+
+  const validationSchema = Yup.object({
+    email: Yup.string().email("Invalid email format").required("Required"),
+    password: Yup.string().required("Required"),
+  });
+
+  if (!isLoggedIn) {
+    return <Redirect to="/dashboard" />;
+  }
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -120,6 +133,7 @@ export default function SignInSide() {
                     fullWidth
                     variant="contained"
                     color="primary"
+                    disabled={!formik.isValid || formik.isSubmitting}
                     className={classes.submit}
                   >
                     Sign In
@@ -150,7 +164,7 @@ function Copyright() {
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
         AluCoder
-      </Link>{" "}
+      </Link>
       {new Date().getFullYear()}
       {"."}
     </Typography>
