@@ -161,6 +161,10 @@ export default function Layout(props) {
     setOpen(false);
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    props.history.push("/");
+  };
 
   return (
     <div className={classes.root}>

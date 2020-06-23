@@ -10,24 +10,28 @@ import PeopleIcon from "@material-ui/icons/People";
 import BarChartIcon from "@material-ui/icons/BarChart";
 import LayersIcon from "@material-ui/icons/Layers";
 import AssignmentIcon from "@material-ui/icons/Assignment";
-const handleLogout = () => {
+import { Link } from "react-router-dom";
+
+const handleLogout = (props) => {
   localStorage.removeItem("token");
-  alert("you have been logout");
+  props.history.push("/");
 };
 
 export const mainListItems = (
   <div>
     <ListItem button>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Dashboard" />
+      <Link to="/classroom">
+        <ListItemIcon>
+          <DashboardIcon />
+        </ListItemIcon>
+        <ListItemText primary="Dashboard" />
+      </Link>
     </ListItem>
     <ListItem button>
       <ListItemIcon>
         <ShoppingCartIcon />
       </ListItemIcon>
-      <ListItemText primary="Class" />
+      <ListItemText primary="Class Room" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
@@ -40,12 +44,6 @@ export const mainListItems = (
         <BarChartIcon />
       </ListItemIcon>
       <ListItemText primary="Reports" />
-    </ListItem>
-    <ListItem button onClick={handleLogout}>
-      <ListItemIcon>
-        <ExitToAppIcon />
-      </ListItemIcon>
-      <ListItemText primary="Logout" />
     </ListItem>
   </div>
 );
