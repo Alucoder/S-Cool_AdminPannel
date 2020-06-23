@@ -1,5 +1,6 @@
 import React from "react";
+import Layout from "../../components/Layout";
 
 export default function Students() {
-  return <div>Students</div>;
+  return <Layout>Students</Layout>;
 }

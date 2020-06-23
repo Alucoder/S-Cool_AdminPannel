@@ -50,6 +50,9 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  redColor: {
+    color: "red",
+  },
 }));
 
 export default function Login() {
@@ -60,15 +63,22 @@ export default function Login() {
     email: "",
     password: "",
   };
-  const onSubmit = async (values, submitPros) => {
+  const onSubmit = async (
+    values,
+    { setSubmitting, resetForm, setFieldError }
+  ) => {
     console.log("form data", values);
-    console.log("submit Pros", submitPros);
-
-    const {
-      data: { token },
-    } = await axios.post("http://localhost:3001/users/login/admin", values);
-    setIsLoggedIn(false);
-    localStorage.setItem("token", token);
+    try {
+      const {
+        data: { token },
+      } = await axios.post("http://localhost:3001/users/login/admin", values);
+      setIsLoggedIn(false);
+      localStorage.setItem("token", token);
+      resetForm();
+    } catch (error) {
+      setFieldError("general", error.response.data.message);
+      setSubmitting(false);
+    }
   };
 
   const validationSchema = Yup.object({
@@ -128,6 +138,11 @@ export default function Login() {
                     control={<Checkbox value="remember" color="primary" />}
                     label="Remember me"
                   />
+
+                  <Typography variant="subtitle1" color="error">
+                    {formik.errors.general}
+                  </Typography>
+
                   <Button
                     type="submit"
                     fullWidth
