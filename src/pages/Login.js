@@ -72,9 +72,9 @@ export default function Login() {
       const {
         data: { token },
       } = await axios.post("http://localhost:3001/users/login/admin", values);
-      setIsLoggedIn(false);
       localStorage.setItem("token", token);
       resetForm();
+      setIsLoggedIn(false);
     } catch (error) {
       setFieldError("general", error.response.data.message);
       setSubmitting(false);

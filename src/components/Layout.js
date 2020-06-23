@@ -1,3 +1,4 @@
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import React from "react";
 import clsx from "clsx";
 import { makeStyles, fade } from "@material-ui/core/styles";
@@ -19,6 +20,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
 import { mainListItems } from "../components/listItems";
+import { useHistory } from "react-router-dom";
 
 function Copyright() {
   return (
@@ -153,6 +155,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Layout(props) {
   const classes = useStyles();
+  let history = useHistory();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -161,9 +164,10 @@ export default function Layout(props) {
     setOpen(false);
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
   const handleLogout = () => {
     localStorage.removeItem("token");
-    props.history.push("/");
+    history.push("/");
   };
 
   return (
@@ -195,6 +199,7 @@ export default function Layout(props) {
           >
             Scool Dashboard
           </Typography>
+
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -208,6 +213,15 @@ export default function Layout(props) {
               inputProps={{ "aria-label": "search" }}
             />
           </div>
+          <IconButton
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={handleLogout}
+            color="inherit"
+          >
+            <ExitToAppIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
       <Drawer
