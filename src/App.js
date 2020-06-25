@@ -14,7 +14,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Login} />
           {/* <Route path="/dashboard" component={Dashboard} /> */}
-          <PrivateRoute path="/dashboard" component={Dashboard} />
+          <Route path="/dashboard" component={Dashboard} />
           <PrivateRoute path="/classroom" component={ClassRoom} />
           <Route>
             <NoMatch />
