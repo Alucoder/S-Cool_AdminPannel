@@ -11,7 +11,7 @@ describe("Enter Username and Password then Submit", function()
         // cy.get('input:last').should('have.attr','placeholder','Password').type('12345')
         cy.get('button').contains('Sign In').click()
         // cy.get('form').submit()
-        // cy.get('a').contains('Welcome').should('have.text','Welcome');
+        cy.get('a').contains('Welcome').should('have.text','Welcome');
         // cy.title().should('inlcude','Welcome');
 
 
