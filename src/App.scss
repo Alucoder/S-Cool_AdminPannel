@@ -1,0 +1,284 @@
+* {
+    box-sizing: border-box;
+}
+
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+.App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.App-link {
+    color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/*=============================================
+=            Heading Typography            =
+=============================================*/
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "roboto", helvetica, arial, sans-serif;
+    color: #16181a;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2.25rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+h5 {
+    font-size: 1.313rem;
+}
+
+h6 {
+    font-size: 1.125rem;
+}
+
+* {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+    
+    &::before, &::after {
+        -webkit-box-sizing: inherit;
+        box-sizing: inherit;
+    }
+}
+
+body {
+    line-height: 1.5;
+    
+    /* Fallback for when there is no custom background color defined. */
+}
+
+a {
+    text-decoration: none;
+}
+
+hr {
+    background-color: #e0e0e0;
+    border: 0;
+    height: 1px;
+    margin-bottom: 1.5em;
+}
+
+img {
+    height: auto;
+    
+    /* Make sure images are scaled correctly. */
+    max-width: 100%;
+    
+    /* Adhere to container width. */
+}
+
+figure {
+    margin: 1em 0;
+    
+    /* Extra wide images within figure tags don't overflow the content area. */
+}
+
+.sc-container, .sc-container-fluid {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 768px) {
+    .sc-container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .sc-container {
+        max-width: 940px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .sc-container {
+        max-width: 1160px;
+    }
+}
+/*=============================================
+=            Container            =
+=============================================*/
+
+.sc-flex-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.sc-flex-space-between {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.sc-flex-item-centered {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.sc-flex-row {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.layout-site--boxed #page {
+    margin: 20px auto;
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/*=============================================
+=            Lists            =
+=============================================*/
+
+ul, ol {
+    margin: 0 0 1.6rem 1.6rem;
+    padding-left: 0;
+}
+
+ul {
+    list-style: square;
+}
+
+ol {
+    list-style: decimal;
+}
+
+li > {
+    ul, ol {
+        margin-bottom: 0;
+        margin-left: 1.6rem;
+    }
+}
+
+
+/*=============================================
+=            Login  page            =
+=============================================*/
+
+.login-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #E5F1FF;
+    
+    
+    .login-section {
+        width: 60%;
+        margin: 10% auto;
+        display: flex;
+        align-items: center;
+        background-color: #C4E3FF;
+        border-radius: 25px;
+
+        .site-title {
+            text-align: center;
+        }
+
+        .login-form-container {
+            border-radius: 0 25px 25px 0;
+            padding: 150px 40px;
+            width: 50%;
+            background-color: #ffffff;
+            
+            .MuiFormControl-marginNormal {
+                margin: 15px 0;
+            }
+            .PrivateNotchedOutline-root-2{
+                border-width: 0 0 1px 0;
+                border-radius: 0;
+            }
+            
+            .MuiFormHelperText-root.Mui-error {
+                position: absolute;
+                right: 0;
+                left: auto;
+                bottom: 20px;
+            }
+            
+            .sc-signin {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                
+            }
+
+            h3{
+                color : #393852;
+                
+            }
+
+            .submit-button {
+                border: 0;
+                background-color: #000;
+                color: #ffffff;
+                padding: 8px;
+                border-radius: 5px;
+                
+            }
+
+            .Mui-disabled{
+                background-color: #efefef;
+            }
+        }
+        
+    }
+    
+    .side-image{
+        width: 50%;
+        padding: 40px;
+        
+    }
+}
+
+/*=============================================
+=            Footer          =
+=============================================*/
+
