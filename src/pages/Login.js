@@ -71,7 +71,7 @@ export default function Login() {
     try {
       const {
         data: { token },
-      } = await axios.post("http://localhost:30022/users/login/admin", values);
+      } = await axios.post("http://localhost:3002/users/login/admin", values);
       localStorage.setItem("token", token);
       resetForm();
       setIsLoggedIn(false);
