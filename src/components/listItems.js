@@ -20,7 +20,7 @@ const handleLogout = (props) => {
 export const mainListItems = (
   <div>
     <ListItem button>
-      <Link to="/classroom">
+      <Link to="/dashboard">
         <ListItemIcon>
           <DashboardIcon />
         </ListItemIcon>
@@ -28,10 +28,12 @@ export const mainListItems = (
       </Link>
     </ListItem>
     <ListItem button>
-      <ListItemIcon>
-        <ShoppingCartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Class Room" />
+      <Link to="/classroom">
+        <ListItemIcon>
+          <ShoppingCartIcon />
+        </ListItemIcon>
+        <ListItemText primary="Class Room" />
+      </Link>
     </ListItem>
     <ListItem button>
       <ListItemIcon>
