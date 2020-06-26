@@ -3,10 +3,13 @@ import "./App.css";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 
+
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import NoMatch from "./components/NoMatch";
 import PrivateRoute from "./utils/PrivateRoute";
 import ClassRoom from "./pages/sidebar/classroom";
+import Subject from "./pages/sidebar/Subject";
+
 function App() {
   return (
     <div className="App">
@@ -16,6 +19,7 @@ function App() {
           {/* <Route path="/dashboard" component={Dashboard} /> */}
           <PrivateRoute path="/dashboard" component={Dashboard} />
           <PrivateRoute path="/classroom" component={ClassRoom} />
+          <PrivateRoute path="/subject" component={Subject} />
           <Route>
             <NoMatch />
           </Route>
