@@ -18,6 +18,8 @@ function App() {
           {/* <Route path="/dashboard" component={Dashboard} /> */}
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/classroom" component={ClassRoom} />
+          <Route path="/subject" component={Subject} />
+
           <Route>
             <NoMatch />
           </Route>
