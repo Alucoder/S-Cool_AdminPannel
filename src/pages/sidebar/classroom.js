@@ -134,7 +134,6 @@ export default function classroom() {
                 >
                   Post
                 </Button>
-                <pre>{JSON.stringify(formik.values, null, 2)}</pre>
               </Form>
             );
           }}
