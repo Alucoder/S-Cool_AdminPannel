@@ -7,21 +7,26 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import NoMatch from "./components/NoMatch";
 import PrivateRoute from "./utils/PrivateRoute";
 import ClassRoom from "./pages/sidebar/classroom";
+import { ThemeProvider } from "@material-ui/core";
+// import ClassRoom from "./pages/sidebar/";
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/" component={Login} />
-          {/* <Route path="/dashboard" component={Dashboard} /> */}
-          <PrivateRoute path="/dashboard" component={Dashboard} />
-          <PrivateRoute path="/classroom" component={ClassRoom} />
-          <Route>
-            <NoMatch />
-          </Route>
-        </Switch>
-      </BrowserRouter>
-    </div>
+    <ThemeProvider>
+      <div className="App">
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={Login} />
+            {/* <Route path="/dashboard" component={Dashboard} /> */}
+            <PrivateRoute path="/dashboard" component={Dashboard} />
+            <PrivateRoute path="/classroom" component={ClassRoom} />
+            {/* <PrivateRoute path="/subject" component={Subject} /> */}
+            <Route>
+              <NoMatch />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </div>
+    </ThemeProvider>
   );
 }
 

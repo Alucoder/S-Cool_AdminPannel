@@ -11,33 +11,33 @@ import BarChartIcon from "@material-ui/icons/BarChart";
 import LayersIcon from "@material-ui/icons/Layers";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import { Link } from "react-router-dom";
+import { makeStyles } from "@material-ui/core";
 
 const handleLogout = (props) => {
   localStorage.removeItem("token");
   props.history.push("/");
 };
+const useStyles = makeStyles({});
 
 export const mainListItems = (
   <div>
-    <ListItem button>
-      <Link to="/classroom">
-        <ListItemIcon>
-          <DashboardIcon />
-        </ListItemIcon>
-        <ListItemText primary="Dashboard" />
-      </Link>
+    <ListItem button component={Link} to="dashboard">
+      <ListItemIcon>
+        <DashboardIcon />
+      </ListItemIcon>
+      <ListItemText primary="Dashboard" />
     </ListItem>
-    <ListItem button>
+    <ListItem button component={Link} to="/classroom">
       <ListItemIcon>
         <ShoppingCartIcon />
       </ListItemIcon>
-      <ListItemText primary="Class Room" />
+      <ListItemText primary="Class" />
     </ListItem>
-    <ListItem button>
+    <ListItem button component={Link} to="/subjects">
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
-      <ListItemText primary="Students" />
+      <ListItemText primary="Subjects" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>

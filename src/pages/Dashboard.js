@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout";
-import { Grid, Paper } from "@material-ui/core";
+import { Grid, Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
-
+import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
+import { Line } from "react-chartjs-2";
+import axios from "axios";
+import Calendar from "react-calendar";
+import DoughnutChart from "../components/DoughnutChart";
+import "react-calendar/dist/Calendar.css";
+import BarChart from "../components/BarChart";
 const useStyles = makeStyles((theme) => ({
   container: {
     paddingTop: theme.spacing(4),
@@ -16,32 +22,98 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
   },
   fixedHeight: {
-    height: 240,
+    height: 265,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
   },
 }));
 
 // const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
 export default function Dashboard() {
-  // const classes = useStyles();
+  const classes = useStyles();
 
+  const SmallBox = () => (
+    <>
+      <Grid item xs={6} sm={6}>
+        <Paper className={classes.paper}>
+          <Grid container spacing={3}>
+            <Grid item xs={4}>
+              <LibraryBooksIcon color="primary" style={{ fontSize: 70 }} />
+            </Grid>
+            <Grid item xs={8}>
+              <Typography variant="h3">101</Typography>
+              <Typography noWrap>Students</Typography>
+            </Grid>
+          </Grid>
+        </Paper>
+      </Grid>
+      <Grid item xs={6} sm={6}>
+        <Paper className={classes.paper}>
+          <Grid container spacing={3}>
+            <Grid item xs={4}>
+              <LibraryBooksIcon color="primary" style={{ fontSize: 70 }} />
+            </Grid>
+            <Grid item xs={8}>
+              <Typography variant="h3">101</Typography>
+              <Typography noWrap>Students</Typography>
+            </Grid>
+          </Grid>
+        </Paper>
+      </Grid>
+      <Grid item xs={6} sm={6}>
+        <Paper className={classes.paper}>
+          <Grid container spacing={3}>
+            <Grid item xs={4}>
+              <LibraryBooksIcon color="primary" style={{ fontSize: 70 }} />
+            </Grid>
+            <Grid item xs={8}>
+              <Typography variant="h3">101</Typography>
+              <Typography noWrap>Students</Typography>
+            </Grid>
+          </Grid>
+        </Paper>
+      </Grid>
+      <Grid item xs={6} sm={6}>
+        <Paper className={classes.paper}>
+          <Grid container spacing={3}>
+            <Grid item xs={4}>
+              <LibraryBooksIcon color="primary" style={{ fontSize: 70 }} />
+            </Grid>
+            <Grid item xs={8}>
+              <Typography variant="h3">101</Typography>
+              <Typography noWrap>Students</Typography>
+            </Grid>
+          </Grid>
+        </Paper>
+      </Grid>
+    </>
+  );
   return (
     <Layout>
       <Grid container spacing={3}>
-        {/* Chart */}
-        <Grid item xs={12} md={8} lg={9}>
-          heloo
-          {/* <Paper className={fixedHeightPaper}>hello<Chart /></Paper> */}
+        <Grid container item xs={12} md={6} spacing={5}>
+          <SmallBox />
         </Grid>
-        {/* Recent Deposits */}
-        <Grid item xs={12} md={4} lg={3}>
-          vb
-          {/* <Paper className={fixedHeightPaper}><Deposits /></Paper> */}
+
+        <Grid item xs={12} md={6}>
+          <Paper className={(classes.paper, classes.fixedHeight)}>
+            <DoughnutChart />
+          </Paper>
         </Grid>
-        {/* Recent Orders */}
-        <Grid item xs={12}>
-          dg
-          {/* <Paper className={classes.paper}><Orders /></Paper> */}
+
+        <Grid item xs={12} md={7}>
+          <Paper className={classes.paper}>
+            <BarChart />
+          </Paper>
+        </Grid>
+        <Grid container item xs={12} md={3}>
+          <Paper className={classes.paper}>
+            <Calendar value={new Date()} />
+          </Paper>
         </Grid>
       </Grid>
     </Layout>
