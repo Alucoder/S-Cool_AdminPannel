@@ -13,10 +13,6 @@ import AssignmentIcon from "@material-ui/icons/Assignment";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core";
 
-const handleLogout = (props) => {
-  localStorage.removeItem("token");
-  props.history.push("/");
-};
 const useStyles = makeStyles({});
 
 export const mainListItems = (
