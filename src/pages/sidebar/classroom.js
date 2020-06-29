@@ -21,10 +21,10 @@ import FormControl from "@material-ui/core/FormControl";
 const classStyle = makeStyles((theme) => ({
   subjectMain: {
     height: "60vh",
-    width: "25%",
+    width: "100%",
     borderRadius: 14,
     backgroundColor: "#ffffff",
-    // margin: theme.spacing(8, "auto")
+    margin: theme.spacing(8, "auto"),
   },
   headingText: {
     display: "inline-block",
@@ -89,15 +89,6 @@ export default function classroom() {
           {(formik) => {
             return (
               <Form className={classes.formClass}>
-                {/* <FormControl>
-                  <InputLabel htmlFor="age-simple">Class</InputLabel>
-                  <Field type="select" name="age" as={Select}>
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                  </Field>
-                </FormControl> */}
-                ;
                 <div>
                   <Field placeholder="Class" name="class" as="select">
 
@@ -107,6 +98,9 @@ export default function classroom() {
                     <option value={4}>Four</option>
                     <option value={5}>Five</option>
                     <option value={6}>Six</option>
+                    <option value={7}>Seven</option>
+                    <option value={8}>Eight</option>
+                    <option value={9}>Nine</option>
                   </Field>
                 </div>
                 <br />

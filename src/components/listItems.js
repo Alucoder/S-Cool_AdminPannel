@@ -12,22 +12,19 @@ import BarChartIcon from "@material-ui/icons/BarChart";
 import LayersIcon from "@material-ui/icons/Layers";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import { Link } from "react-router-dom";
+import { makeStyles } from "@material-ui/core";
 
-const handleLogout = (props) => {
-  localStorage.removeItem("token");
-  props.history.push("/");
-};
+const useStyles = makeStyles({});
 
 export const mainListItems = (
   <div>
-    <ListItem button>
-      <Link to="/dashboard">
-        <ListItemIcon>
-          <DashboardIcon />
-        </ListItemIcon>
-        <ListItemText primary="Dashboard" />
-      </Link>
+    <ListItem button component={Link} to="dashboard">
+      <ListItemIcon>
+        <DashboardIcon />
+      </ListItemIcon>
+      <ListItemText primary="Dashboard" />
     </ListItem>
+<<<<<<< HEAD
      <ListItem button>
       <Link to="/classroom">
         <ListItemIcon>
@@ -40,10 +37,19 @@ export const mainListItems = (
     
 
     <ListItem button>
+=======
+    <ListItem button component={Link} to="/classroom">
+      <ListItemIcon>
+        <ShoppingCartIcon />
+      </ListItemIcon>
+      <ListItemText primary="Class" />
+    </ListItem>
+    <ListItem button component={Link} to="/subject">
+>>>>>>> cf52eac2b3c743ac7b73aeb3d6cac5311d7ab686
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
-      <ListItemText primary="Students" />
+      <ListItemText primary="Subject" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
