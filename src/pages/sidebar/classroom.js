@@ -90,8 +90,10 @@ export default function classroom() {
             return (
               <Form className={classes.formClass}>
                 <div>
-                  <Field placeholder="Class" name="class" as="select">
-
+                  <Field name="classroom" as="select">
+                    <option aria-label="None" value="">
+                      Select Classroom
+                    </option>
                     <option value={1}>One</option>
                     <option value={2}>Two</option>
                     <option value={3}>Three</option>

@@ -24,20 +24,6 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItem>
-<<<<<<< HEAD
-     <ListItem button>
-      <Link to="/classroom">
-        <ListItemIcon>
-          <ShoppingCartIcon />
-        </ListItemIcon>
-        <ListItemText primary="Class Room" />
-      </Link>
-    </ListItem> 
-    
-    
-
-    <ListItem button>
-=======
     <ListItem button component={Link} to="/classroom">
       <ListItemIcon>
         <ShoppingCartIcon />
@@ -45,7 +31,6 @@ export const mainListItems = (
       <ListItemText primary="Class" />
     </ListItem>
     <ListItem button component={Link} to="/subject">
->>>>>>> cf52eac2b3c743ac7b73aeb3d6cac5311d7ab686
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
