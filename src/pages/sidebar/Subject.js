@@ -97,6 +97,9 @@ export default function Subject() {
                 />
 
                 <Field name="classroom" component="select" placeholder="Class">
+                  <option aria-label="None" value="">
+                    Select Classroom
+                  </option>
                   {classRoom.map((room) => (
                     <option value={room._id}>
                       {room.classroom} "{room.section}"
@@ -105,6 +108,9 @@ export default function Subject() {
                 </Field>
 
                 <Field name="teacher" component="select" placeholder="Teacher">
+                  <option aria-label="None" value="">
+                    Select Teacher
+                  </option>
                   <option value="5ef60e832f3bc63628e30ad0">Ram</option>
                   <option value="5ef60e832f3bc63628e30ad0">Hari</option>
                 </Field>
