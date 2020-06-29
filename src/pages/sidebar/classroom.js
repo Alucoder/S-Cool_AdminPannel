@@ -99,7 +99,8 @@ export default function classroom() {
                 </FormControl> */}
                 ;
                 <div>
-                  <Field name="class" as="select">
+                  <Field placeholder="Class" name="class" as="select">
+
                     <option value={1}>One</option>
                     <option value={2}>Two</option>
                     <option value={3}>Three</option>
@@ -114,7 +115,7 @@ export default function classroom() {
                     component={TextField}
                     name="section"
                     type="text"
-                    label="Section"
+                    placeholder="Section"
                     variant="outlined"
                     margin="normal"
                     required
