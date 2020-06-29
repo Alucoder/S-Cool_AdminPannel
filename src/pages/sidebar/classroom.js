@@ -43,7 +43,7 @@ export default function classroom() {
   const classes = classStyle();
 
   const initialValues = {
-    class: "",
+    classroom: "",
     section: "",
   };
 
@@ -65,7 +65,7 @@ export default function classroom() {
   };
 
   const validationSchema = Yup.object({
-    class: Yup.string().required("class is required"),
+    classroom: Yup.string().required("class is required"),
     section: Yup.string().required("section is required"),
   });
 
