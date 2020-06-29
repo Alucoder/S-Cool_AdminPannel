@@ -15,7 +15,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import { TextField } from "formik-material-ui";
 import { Form, Field, Formik } from "formik";
 import * as Yup from "yup";
-import { userLogin } from "../api/user";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 
