@@ -4,7 +4,7 @@ describe("Enter Username and Password then Submit", function()
 {
     it("submits login form after entering username and password", function(){
     
-        cy.visit('http://localhost:3002/')
+        cy.visit('http://localhost:3000/')
         // cy.get('input:first').should('have.attr','placeholder','Email').type('admin1@gmail.com')
         cy.get('input[placeholder="Email"]').type('admin1@gmail.com')
         cy.get('input[placeholder="Password"]').type('12345')

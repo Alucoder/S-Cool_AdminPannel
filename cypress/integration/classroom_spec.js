@@ -12,7 +12,7 @@ describe("Visits classroom ", function()
         cy.get('button').contains('Sign In').click()
         // cy.get('form').submit()
         // cy.get('button').contains('CLASS').click();
-        cy.contains('Class Room').click()
+        cy.contains('Class').click()
         // cy.visit('http://localhost:3000/classroom')
        
       
