@@ -20,14 +20,12 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     overflow: "auto",
     flexDirection: "column",
+    // borderRadius: 14,
+    textAlign: "center",
+    color: theme.palette.text.secondary,
   },
   fixedHeight: {
     height: 265,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
   },
 }));
 
@@ -58,8 +56,8 @@ export default function Dashboard() {
               <LibraryBooksIcon color="primary" style={{ fontSize: 70 }} />
             </Grid>
             <Grid item xs={8}>
-              <Typography variant="h3">101</Typography>
-              <Typography noWrap>Students</Typography>
+              <Typography variant="h3">10</Typography>
+              <Typography noWrap>Teachers</Typography>
             </Grid>
           </Grid>
         </Paper>
@@ -72,7 +70,7 @@ export default function Dashboard() {
             </Grid>
             <Grid item xs={8}>
               <Typography variant="h3">101</Typography>
-              <Typography noWrap>Students</Typography>
+              <Typography noWrap>Attendance</Typography>
             </Grid>
           </Grid>
         </Paper>
@@ -110,7 +108,7 @@ export default function Dashboard() {
             <BarChart />
           </Paper>
         </Grid>
-        <Grid container item xs={12} md={3}>
+        <Grid container item xs={12} md={5}>
           <Paper className={classes.paper}>
             <Calendar value={new Date()} />
           </Paper>
