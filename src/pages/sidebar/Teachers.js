@@ -30,16 +30,16 @@ export default function Students() {
     <div className={classes.root}>
       <Grid container spacing={4} alignItems="center"
       className={classes.stdDashboardContainer}>
-        <Grid item xs= {4} button component={Link} to="/newstudent">
+        <Grid item xs= {4} button component={Link} to="/new-student">
           <Paper className={classes.gridItemNavigate} >
-          <img alt="studenticon" src="#"/> <br/>
-          New Students
+          <img alt="studenticon" src=""/> <br/>
+          New Teacher
           </Paper>
         </Grid>
-        <Grid item xs={4} button component={Link} to="/studentsinfo">
+        <Grid item xs={4} button component={Link} to="/student-info">
           <Paper className={classes.gridItemNavigate}>
-          <img alt="searchicon" src="#"/> <br/>
-          Students Info
+          <img alt="searchicon" src=""/> <br/>
+          Teacher Info
           </Paper>
         </Grid>
       </Grid>

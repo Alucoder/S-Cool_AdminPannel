@@ -8,6 +8,11 @@ import NoMatch from "./components/NoMatch";
 import PrivateRoute from "./utils/PrivateRoute";
 import ClassRoom from "./pages/sidebar/classroom";
 import Subject from "./pages/sidebar/Subject";
+import Student from './pages/sidebar/Students';
+import Teacher from './pages/sidebar/Teachers'
+import newStudent from './pages/newstudent';
+import studentInfo from './pages/studentinfo';
+import newTeacher from './pages/newteacher'
 
 function App() {
   return (
@@ -19,6 +24,11 @@ function App() {
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/classroom" component={ClassRoom} />
           <Route path="/subject" component={Subject} />
+          <Route path="/student" component={Student} />
+          <Route path="/teacher" component={Teacher} />
+          <Route path="/newstudent" component={newStudent} />
+          <Route path="/studentsinfo" component={studentInfo} />
+          <Route path="/newteacher" component={newTeacher} />
 
           <Route>
             <NoMatch />

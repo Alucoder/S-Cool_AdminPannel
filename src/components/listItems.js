@@ -17,7 +17,7 @@ const useStyles = makeStyles({});
 
 export const mainListItems = (
   <div>
-    <ListItem button component={Link} to="dashboard">
+    <ListItem button component={Link} to="/dashboard">
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
@@ -34,6 +34,12 @@ export const mainListItems = (
         <PeopleIcon />
       </ListItemIcon>
       <ListItemText primary="Subject" />
+    </ListItem>
+    <ListItem button component={Link} to="/student">
+      <ListItemIcon>
+        <PeopleIcon />
+      </ListItemIcon>
+      <ListItemText primary="Student" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>

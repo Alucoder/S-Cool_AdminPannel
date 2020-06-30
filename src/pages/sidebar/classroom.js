@@ -23,7 +23,7 @@ const classStyle = makeStyles((theme) => ({
     height: "60vh",
     width: "100%",
     borderRadius: 14,
-    backgroundColor: "#ffffff",
+    backgroundColor: "#fff",
     margin: theme.spacing(8, "auto"),
   },
   headingText: {
@@ -54,7 +54,7 @@ export default function classroom() {
     try {
       console.log("form data", values);
 
-      await axios.post("http://localhost:3002/class", values, {
+      await axios.post("http://localhost:30022/class", values, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       resetForm();
