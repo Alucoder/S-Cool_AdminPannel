@@ -16,10 +16,10 @@ describe("Visits classroom ", function()
         // cy.visit('http://localhost:3000/classroom')
        // cy.title().should('inlcude','Welcome');
 
-       cy.get('#class').select('Five')
+       cy.get('#class').select('Six')
        cy.get('input[placeholder="Section"]').type('B')
 
-      cy.contains('Post').click()
+    //   cy.contains('Post').click()
        
 
 

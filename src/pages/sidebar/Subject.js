@@ -96,7 +96,7 @@ export default function Subject() {
                   // autoFocus
                 />
 
-                <Field name="classroom" component="select" placeholder="Class">
+                <Field id="class" name="classroom" component="select" placeholder="Class">
                   <option aria-label="None" value="">
                     Select Classroom
                   </option>
@@ -107,7 +107,7 @@ export default function Subject() {
                   ))}
                 </Field>
 
-                <Field name="teacher" component="select" placeholder="Teacher">
+                <Field id="teacher" name="teacher" component="select" placeholder="Teacher">
                   <option aria-label="None" value="">
                     Select Teacher
                   </option>
