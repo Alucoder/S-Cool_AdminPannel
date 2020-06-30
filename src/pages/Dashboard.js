@@ -1,24 +1,33 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout";
-import { Grid } from "@material-ui/core";
-// import { makeStyles } from "@material-ui/core/styles";
-
-
-// const useStyles = makeStyles((theme) => ({
-//   container: {
-//     paddingTop: theme.spacing(4),
-//     paddingBottom: theme.spacing(4),
-//   },
-//   paper: {
-//     padding: theme.spacing(2),
-//     display: "flex",
-//     overflow: "auto",
-//     flexDirection: "column",
-//   },
-//   fixedHeight: {
-//     height: 240,
-//   },
-// }));
+import { Grid, Paper, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
+import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
+import { Line } from "react-chartjs-2";
+import axios from "axios";
+import Calendar from "react-calendar";
+import DoughnutChart from "../components/DoughnutChart";
+import "react-calendar/dist/Calendar.css";
+import BarChart from "../components/BarChart";
+const useStyles = makeStyles((theme) => ({
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+  },
+  paper: {
+    padding: theme.spacing(2),
+    display: "flex",
+    overflow: "auto",
+    flexDirection: "column",
+    // borderRadius: 14,
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  },
+  fixedHeight: {
+    height: 265,
+  },
+}));
 
 // const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
