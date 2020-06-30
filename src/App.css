@@ -37,6 +37,8 @@
   }
 }
 .MuiBox-root.MuiBox-root-21 input[type="text"],
+.MuiBox-root.MuiBox-root-21 input[type="email"],
+.MuiBox-root.MuiBox-root-21 input[type="number"],
 .MuiBox-root.MuiBox-root-21 select {
   display: block;
   width: 100%;
