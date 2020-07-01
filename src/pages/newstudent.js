@@ -40,7 +40,7 @@ export default function NewStudent() {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await Axios.get("http://localhost:30022/class", {
+        const { data } = await Axios.get("http://localhost:3002/class", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -58,7 +58,7 @@ export default function NewStudent() {
     { setSubmitting, resetForm, setFieldError }
   ) => {
     try {
-      await Axios.post("http://localhost:30022/users/register", values, {
+      await Axios.post("http://localhost:3002/users/register", values, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -105,7 +105,7 @@ export default function NewStudent() {
               <Form className={classes.form}>
                 <Field
                   component={TextField}
-                  label="Full Name"
+                  placeholder="Full Name"
                   name="fullname"
                   type="text"
                   variant="outlined"
@@ -114,7 +114,10 @@ export default function NewStudent() {
                   autoFocus
                 />
                 <br/>
-                <Field component={Select} fullWidth name="classroom" placeholder="Class">
+                <Field id="class" component="select" fullWidth name="classroom" placeholder="Class">
+                <option aria-label="None" value="">
+                    Select Classroom
+                  </option>
                   {students.map((room) => (
                     <option value={room._id}>
                       {room.classroom} "{room.section}"
@@ -125,7 +128,7 @@ export default function NewStudent() {
                   component={TextField}
                   name="studentID"
                   type="text"
-                  label="Student ID"
+                  placeholder="Student ID"
                   variant="outlined"
                   margin="normal"
                   fullWidth
@@ -135,7 +138,7 @@ export default function NewStudent() {
                   component={TextField}
                   name="phone"
                   type="text"
-                  label="Guardain phone no"
+                  placeholder="Guardain phone no"
                   variant="outlined"
                   margin="normal"
                   fullWidth
@@ -145,7 +148,7 @@ export default function NewStudent() {
                   component={TextField}
                   name="email"
                   type="text"
-                  label="email"
+                  placeholder="email"
                   variant="outlined"
                   margin="normal"
                   fullWidth

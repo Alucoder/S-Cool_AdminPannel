@@ -24,17 +24,12 @@ function App() {
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/classroom" component={ClassRoom} />
           <Route path="/subject" component={Subject} />
-<<<<<<< HEAD
-          <Route path="/newstudent" component={NewStudent} />
-          <Route path="/newteacher" component={NewTeacher} />
-=======
           <Route path="/student" component={Student} />
           <Route path="/teacher" component={Teacher} />
           <Route path="/newstudent" component={newStudent} />
           <Route path="/studentsinfo" component={studentInfo} />
           <Route path="/newteacher" component={newTeacher} />
 
->>>>>>> 4cc2f390769ef32d92aa1c686ae578f0ea6f4b49
           <Route>
             <NoMatch />
           </Route>

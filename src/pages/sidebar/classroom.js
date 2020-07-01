@@ -54,7 +54,7 @@ export default function classroom() {
     try {
       console.log("form data", values);
 
-      await axios.post("http://localhost:30022/class", values, {
+      await axios.post("http://localhost:3002/class", values, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       resetForm();
