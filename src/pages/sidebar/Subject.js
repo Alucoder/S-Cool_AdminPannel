@@ -12,12 +12,13 @@ const classStyle = makeStyles((theme) => ({}));
 
 export default function Subject() {
   const [classRoom, setClassRoom] = useState([]);
+  const [teachers, setTeachers] = useState([]);
   const classes = classStyle();
 
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await Axios.get("http://localhost:3002/class", {
+        const { data } = await Axios.get("http://localhost:30022/class", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -28,6 +29,21 @@ export default function Subject() {
       }
     })();
   }, []);
+
+  useEffect(()=>{
+    (async () => {
+      try {
+        const { data } = await Axios.get("http://localhost:30022/users/userteacher", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },  
+        });
+        setTeachers(data);
+      } catch (e) {
+        throw e;
+      }
+    })();
+  },[])
   // const [isPosted, setPosted] = useState(true)
 
   const initialValues = {
@@ -42,7 +58,7 @@ export default function Subject() {
     { setSubmitting, resetForm, setFieldError }
   ) => {
     try {
-      await Axios.post("http://localhost:3002/subject", values, {
+      await Axios.post("http://localhost:30022/subject", values, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -86,7 +102,7 @@ export default function Subject() {
               <Form className={classes.form}>
                 <Field
                   placeholder="Subject Name"
-                  name="name"
+                  name="fname"
                   type="text"
                   label="Subject Name"
                   variant="outlined"
@@ -111,8 +127,11 @@ export default function Subject() {
                   <option aria-label="None" value="">
                     Select Teacher
                   </option>
-                  <option value="5ef60e832f3bc63628e30ad0">Ram</option>
-                  <option value="5ef60e832f3bc63628e30ad0">Hari</option>
+                  {teachers.map((user) => (
+                    <option value={user._id}>
+                      {user.fname} 
+                    </option>
+                  ))}
                 </Field>
 
                 <Field

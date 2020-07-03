@@ -41,6 +41,12 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Student" />
     </ListItem>
+    <ListItem button component={Link} to="/teacher">
+      <ListItemIcon>
+        <PeopleIcon />
+      </ListItemIcon>
+      <ListItemText primary="Teacher" />
+    </ListItem>
     <ListItem button>
       <ListItemIcon>
         <BarChartIcon />

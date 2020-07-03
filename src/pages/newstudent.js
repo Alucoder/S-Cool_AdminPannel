@@ -30,10 +30,11 @@ export default function NewStudent() {
   const classes = classStyle();
 
   const initialValues = {
-    fullname: "",
+    name: "",
     classroom: "",
-    studentID: "",
+    userid: "",
     email: "",
+    admin: "student",
     phone: "",
   };
 
@@ -76,9 +77,9 @@ export default function NewStudent() {
   const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 
   const validationSchema = Yup.object({
-    fullname: Yup.string().required("Name is required"),
+    fname: Yup.string().required("Name is required"),
     classroom: Yup.string().required("Classroom is required"),
-    studentID: Yup.string().required("Student Id is required"),
+    userid: Yup.string().required("Student Id is required"),
     email: Yup.string().email("Invalid email format").required("Required"),
     phone: Yup.string().matches(phoneRegExp, 'Phone number is not valid').required("Phone is required"),
   });
@@ -106,7 +107,7 @@ export default function NewStudent() {
                 <Field
                   component={TextField}
                   label="Full Name"
-                  name="fullname"
+                  name="name"
                   type="text"
                   variant="outlined"
                   margin="normal"
@@ -123,7 +124,7 @@ export default function NewStudent() {
                 </Field>
                 <Field
                   component={TextField}
-                  name="studentID"
+                  name="userid"
                   type="text"
                   label="Student ID"
                   variant="outlined"
@@ -140,6 +141,16 @@ export default function NewStudent() {
                   margin="normal"
                   fullWidth
                 />
+                {/* <br/>
+                <Field
+                  component={TextField}
+                  name="phone"
+                  type="text"
+                  label="usertype"
+                  variant="outlined"
+                  margin="normal"
+                  fullWidth
+                /> */}
                 <br/>
                 <Field
                   component={TextField}

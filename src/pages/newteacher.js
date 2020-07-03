@@ -1,48 +1,65 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout";
-import Button from "@material-ui/core/Button";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
-import { Form, Field, Formik } from "formik";
+import {
+  makeStyles,
+  Button,
+  Box,
+  Typography,
+} from "@material-ui/core";
+import { Form, Field, Formik, yupToFormErrors} from "formik";
+import { TextField, Select} from "formik-material-ui";
 import * as Yup from "yup";
-import { makeStyles } from "@material-ui/core/styles";
 import Axios from "axios";
 
-const classStyle = makeStyles((theme) => ({}));
+const classStyle = makeStyles((theme) => ({
+  form: {
+    width: "100%",
+    padding: theme.spacing(5)
+  },
+  headingText: {
+    display: "inline-block",
+    margin: theme.spacing(2),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
 
-export default function NewTeacher() {
-  const [classRoom, /*setClassRoom*/] = useState([]);
+export default function NewStudent() {
+  const [students, setStudent] = useState([]);
   const classes = classStyle();
 
-//   useEffect(() => {
-//     (async () => {
-//       try {
-//         const { data } = await Axios.get("http://localhost:3002/user", {
-//           headers: {
-//             Authorization: `Bearer ${localStorage.getItem("token")}`,
-//           },
-//         });
-//         setClassRoom(data);
-//       } catch (e) {
-//         throw e;
-//       }
-//     })();
-//   }, []);
-  // const [isPosted, setPosted] = useState(true)
-
   const initialValues = {
-    name: "",
+    fname: "",
     classroom: "",
+    userid: "",
     email: "",
+    admin: "teacher",
     phone: "",
   };
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const { data } = await Axios.get("http://localhost:30022/class", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        setStudent(data);
+      } catch (e) {
+        throw e;
+      }
+    })();
+  }, []);
+
 
   const onSubmit = async (
     values,
     { setSubmitting, resetForm, setFieldError }
   ) => {
     try {
-      await Axios.post("http://localhost:3002/user", values, {
+      await Axios.post("http://localhost:30022/users/register", values, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -57,11 +74,14 @@ export default function NewTeacher() {
     } catch (error) {}
   };
 
+  const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+
   const validationSchema = Yup.object({
-    name: Yup.string().required("Required"),
-    classroom: Yup.string().required("Required"),
-    email: Yup.string().required("Required"),
-    phone: Yup.string().required("Required"),
+    fname: Yup.string().required("Name is required"),
+    classroom: Yup.string().required("Classroom is required"),
+    userid: Yup.string().required("Student Id is required"),
+    email: Yup.string().email("Invalid email format").required("Required"),
+    phone: Yup.string().matches(phoneRegExp, 'Phone number is not valid').required("Phone is required"),
   });
 
   return (
@@ -85,49 +105,63 @@ export default function NewTeacher() {
             return (
               <Form className={classes.form}>
                 <Field
-                  placeholder="Full Name"
-                  name="name"
-                  type="text"
+                  component={TextField}
                   label="Full Name"
+                  name="fname"
+                  type="text"
                   variant="outlined"
                   margin="normal"
-                  fullwidth
-                  className={classes.txtSection}
-                  // autoFocus
+                  fullWidth
+                  autoFocus
                 />
-
-                <Field name="classroom" component="select" placeholder="Class">
-                  {classRoom.map((room) => (
+                <br/>
+                <Field component={Select} fullWidth name="classroom" placeholder="Class">
+                  {students.map((room) => (
                     <option value={room._id}>
                       {room.classroom} "{room.section}"
                     </option>
                   ))}
                 </Field>
-
                 <Field
-                  placeholder="Guardain phone no"
-                  name="phone"
-                  type="number"
-                  label="Guardain phone no"
+                  component={TextField}
+                  name="userid"
+                  type="text"
+                  label="Teacher id"
                   variant="outlined"
                   margin="normal"
-                  fullwidth
-                  className={classes.txtSection}
-                  // autoFocus
+                  fullWidth
                 />
-
+                <br/>
                 <Field
-                  placeholder="email"
+                  component={TextField}
+                  name="phone"
+                  type="text"
+                  label="Personal phone number"
+                  variant="outlined"
+                  margin="normal"
+                  fullWidth
+                />
+                {/* <br/>
+                <Field
+                  component={TextField}
+                  name="phone"
+                  type="text"
+                  label="usertype"
+                  variant="outlined"
+                  margin="normal"
+                  fullWidth
+                /> */}
+                <br/>
+                <Field
+                  component={TextField}
                   name="email"
-                  type="email"
+                  type="text"
                   label="email"
                   variant="outlined"
                   margin="normal"
-                  fullwidth
-                  className={classes.txtSection}
-                  // autoFocus
+                  fullWidth
                 />
-
+                <br/>
                 <Button
                   type="submit"
                   variant="contained"
