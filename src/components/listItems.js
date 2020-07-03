@@ -8,6 +8,10 @@ import DashboardIcon from "@material-ui/icons/Dashboard";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import PeopleIcon from "@material-ui/icons/People";
 import BarChartIcon from "@material-ui/icons/BarChart";
+import MenuBookIcon from '@material-ui/icons/MenuBook';
+import SchoolIcon from '@material-ui/icons/School';
+import NoteIcon from '@material-ui/icons/Note';
+import ClassIcon from '@material-ui/icons/Class';
 import LayersIcon from "@material-ui/icons/Layers";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import { Link } from "react-router-dom";
@@ -25,19 +29,19 @@ export const mainListItems = (
     </ListItem>
     <ListItem button component={Link} to="/classroom">
       <ListItemIcon>
-        <ShoppingCartIcon />
+        <ClassIcon />
       </ListItemIcon>
       <ListItemText primary="Class" />
     </ListItem>
     <ListItem button component={Link} to="/subject">
       <ListItemIcon>
-        <PeopleIcon />
+        <MenuBookIcon />
       </ListItemIcon>
       <ListItemText primary="Subject" />
     </ListItem>
     <ListItem button component={Link} to="/student">
       <ListItemIcon>
-        <PeopleIcon />
+        <SchoolIcon />
       </ListItemIcon>
       <ListItemText primary="Student" />
     </ListItem>
@@ -46,6 +50,12 @@ export const mainListItems = (
         <PeopleIcon />
       </ListItemIcon>
       <ListItemText primary="Teacher" />
+    </ListItem>
+    <ListItem button component={Link} to="/notice">
+      <ListItemIcon>
+        <NoteIcon />
+      </ListItemIcon>
+      <ListItemText primary="Notice" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>

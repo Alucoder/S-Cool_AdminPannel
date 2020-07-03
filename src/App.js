@@ -12,7 +12,8 @@ import Student from './pages/sidebar/Students';
 import Teacher from './pages/sidebar/Teachers'
 import newStudent from './pages/newstudent';
 import studentInfo from './pages/studentinfo';
-import newTeacher from './pages/newteacher'
+import newTeacher from './pages/newteacher';
+import notice from './pages/notice';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/newstudent" component={newStudent} />
           <Route path="/studentsinfo" component={studentInfo} />
           <Route path="/newteacher" component={newTeacher} />
+          <Route path="/notice" component={notice} />
 
           <Route>
             <NoMatch />
