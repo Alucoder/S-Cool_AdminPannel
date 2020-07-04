@@ -114,7 +114,7 @@ export default function Login() {
                     component={TextField}
                     name="email"
                     type="email"
-                    label="Email"
+                    placeholder="Email"
                     variant="outlined"
                     margin="normal"
                     required
@@ -127,7 +127,7 @@ export default function Login() {
                     component={TextField}
                     name="password"
                     type="password"
-                    label="Password"
+                    placeholder="Password"
                     variant="outlined"
                     margin="normal"
                     required

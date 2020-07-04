@@ -90,10 +90,15 @@ export default function classroom() {
             return (
               <Form className={classes.formClass}>
                 <div>
+<<<<<<< HEAD
                   <Field name="classroom" as="select">
                     <option aria-label="None" value="">
                       Select Classroom
                     </option>
+=======
+                  <Field placeholder="Class" name="class" as="select">
+
+>>>>>>> 1b6bfd2b589cb594aaa44d57c269a7cb7cb617f5
                     <option value={1}>One</option>
                     <option value={2}>Two</option>
                     <option value={3}>Three</option>
@@ -111,7 +116,7 @@ export default function classroom() {
                     component={TextField}
                     name="section"
                     type="text"
-                    label="Section"
+                    placeholder="Section"
                     variant="outlined"
                     margin="normal"
                     required

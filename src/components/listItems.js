@@ -1,5 +1,6 @@
 import React from "react";
 import ListItem from "@material-ui/core/ListItem";
+import Button from "@material-ui/core/Button";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListSubheader from "@material-ui/core/ListSubheader";
@@ -27,6 +28,20 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItem>
+<<<<<<< HEAD
+     <ListItem button>
+      <Link to="/classroom">
+        <ListItemIcon>
+          <ShoppingCartIcon />
+        </ListItemIcon>
+        <ListItemText primary="Class Room" />
+      </Link>
+    </ListItem> 
+    
+    
+
+    <ListItem button>
+=======
     <ListItem button component={Link} to="/classroom">
       <ListItemIcon>
         <ClassIcon />
@@ -34,6 +49,7 @@ export const mainListItems = (
       <ListItemText primary="Class" />
     </ListItem>
     <ListItem button component={Link} to="/subject">
+>>>>>>> cf52eac2b3c743ac7b73aeb3d6cac5311d7ab686
       <ListItemIcon>
         <MenuBookIcon />
       </ListItemIcon>
