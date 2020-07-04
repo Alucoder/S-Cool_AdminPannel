@@ -43,7 +43,7 @@ export default function NewNotice() {
     date: "",
     time: "",
     venue: "",
-    classroom: "",
+    // classroom: "",
   };
 
   useEffect(() => {
@@ -168,13 +168,13 @@ export default function NewNotice() {
                 />
                 <br />
                 <Typography className = {classes.typo}>Notice for</Typography>
-                <Field fullWidth component="Select" name="classroom" placeholder="Class" className = {classes.formDropdown}>
+                {/* <Field fullWidth component="Select" name="classroom" placeholder="Class" className = {classes.formDropdown}>
                   {students.map((room) => (
                     <option value={room._id}>
                       Class {room.classroom} "{room.section}"
                     </option>
                   ))}
-                </Field>
+                </Field> */}
                 <br/>
                 <Button
                   type="submit"
