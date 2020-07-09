@@ -7,13 +7,32 @@ import { Form, Field, Formik } from "formik";
 import * as Yup from "yup";
 import { makeStyles } from "@material-ui/core/styles";
 import Axios from "axios";
+import { TextField } from "formik-material-ui";
 
-const classStyle = makeStyles((theme) => ({}));
-
+const classStyle = makeStyles((theme) => ({
+  subjectMain: {
+    padding: 20,
+    width: "100%",
+    borderRadius: 14,
+    backgroundColor: "#fff",
+    margin: theme.spacing(8, "auto"),
+  },
+  headingText: {
+    display: "inline-block",
+    margin: theme.spacing(2, 0),
+  },
+  formClass: {
+    width: "100%",
+    padding: "16px",
+  },
+  btnClassPost: {
+    borderRadius: 14,
+  },
+}));
 export default function Subject() {
+  const classes = classStyle();
   const [classRoom, setClassRoom] = useState([]);
   const [teachers, setTeachers] = useState([]);
-  const classes = classStyle();
 
   useEffect(() => {
     (async () => {
@@ -24,27 +43,21 @@ export default function Subject() {
           },
         });
         setClassRoom(data);
+
+        const teachers = await Axios.get(
+          "http://localhost:30022/users/userteacher",
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+        setTeachers(teachers.data);
       } catch (e) {
         throw e;
       }
     })();
   }, []);
-
-  useEffect(()=>{
-    (async () => {
-      try {
-        const { data } = await Axios.get("http://localhost:30022/users/userteacher", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },  
-        });
-        setTeachers(data);
-      } catch (e) {
-        throw e;
-      }
-    })();
-  },[])
-  // const [isPosted, setPosted] = useState(true)
 
   const initialValues = {
     name: "",
@@ -83,14 +96,7 @@ export default function Subject() {
   return (
     <Layout>
       <Box boxShadow={3} alignContent="center" className={classes.subjectMain}>
-        <Typography
-          component="h1"
-          variant="h5"
-          mt="2"
-          className={classes.headingText}
-        >
-          New Class
-        </Typography>
+        <h1 style={{ paddingTop: 8 }}>New Subject</h1>
 
         <Formik
           initialValues={initialValues}
@@ -99,20 +105,25 @@ export default function Subject() {
         >
           {(formik) => {
             return (
-              <Form className={classes.form}>
+              <Form className={classes.formClass}>
                 <Field
-                  placeholder="Subject Name"
+                  component={TextField}
                   name="fname"
                   type="text"
                   label="Subject Name"
                   variant="outlined"
                   margin="normal"
-                  fullwidth
-                  className={classes.txtSection}
-                  // autoFocus
+                  fullWidth
+                  autoFocus
                 />
-
-                <Field name="classroom" component="select" placeholder="Class">
+                <Field
+                  name="classroom"
+                  component="select"
+                  placeholder="Class"
+                  fullWidth
+                  className={classes.formClass}
+                  style={{ marginBottom: "10px" }}
+                >
                   <option aria-label="None" value="">
                     Select Classroom
                   </option>
@@ -122,30 +133,29 @@ export default function Subject() {
                     </option>
                   ))}
                 </Field>
-
-                <Field name="teacher" component="select" placeholder="Teacher">
+                <Field
+                  name="teacher"
+                  component="select"
+                  placeholder="Teacher"
+                  className={classes.formClass}
+                >
                   <option aria-label="None" value="">
                     Select Teacher
                   </option>
                   {teachers.map((user) => (
-                    <option value={user._id}>
-                      {user.fname} 
-                    </option>
+                    <option value={user._id}>{user.fname}</option>
                   ))}
                 </Field>
-
                 <Field
-                  placeholder="Description"
                   name="subjectDetail"
                   type="text"
                   label="Description"
                   variant="outlined"
+                  component={TextField}
                   margin="normal"
-                  fullwidth
-                  className={classes.txtSection}
-                  // autoFocus
+                  fullWidth
+                  autoFocus
                 />
-
                 <Button
                   type="submit"
                   variant="contained"

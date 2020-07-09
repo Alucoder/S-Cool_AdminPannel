@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout";
-import {
-  makeStyles,
-  Button,
-  Box,
-  Typography,
-} from "@material-ui/core";
-import { Form, Field, Formik, yupToFormErrors} from "formik";
-import { TextField, Select} from "formik-material-ui";
+import { makeStyles, Button, Box, Typography } from "@material-ui/core";
+import { Form, Field, Formik, yupToFormErrors } from "formik";
+import { TextField, Select } from "formik-material-ui";
 import * as Yup from "yup";
 import Axios from "axios";
 
 const classStyle = makeStyles((theme) => ({
   form: {
     width: "100%",
-    padding: theme.spacing(5)
+    padding: theme.spacing(5),
+  },
+  formDropdown: {
+    width: "100%",
+    padding: theme.spacing(2),
   },
   headingText: {
     display: "inline-block",
@@ -53,7 +52,6 @@ export default function NewStudent() {
     })();
   }, []);
 
-
   const onSubmit = async (
     values,
     { setSubmitting, resetForm, setFieldError }
@@ -64,6 +62,8 @@ export default function NewStudent() {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
+      alert("Sucess");
+
       resetForm();
     } catch (e) {
       setSubmitting(false);
@@ -74,14 +74,15 @@ export default function NewStudent() {
     } catch (error) {}
   };
 
-  const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+  const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
   const validationSchema = Yup.object({
-    fname: Yup.string().required("Name is required"),
-    classroom: Yup.string().required("Classroom is required"),
+    name: Yup.string().required("Name is required"),
     userid: Yup.string().required("Student Id is required"),
     email: Yup.string().email("Invalid email format").required("Required"),
-    phone: Yup.string().matches(phoneRegExp, 'Phone number is not valid').required("Phone is required"),
+    phone: Yup.string()
+      .matches(phoneRegExp, "Phone number is not valid")
+      .required("Phone is required"),
   });
 
   return (
@@ -114,8 +115,15 @@ export default function NewStudent() {
                   fullWidth
                   autoFocus
                 />
-                <br/>
-                <Field component={Select} fullWidth name="classroom" placeholder="Class">
+                <br />
+                <Field
+                  component="select"
+                  className={classes.formDropdown}
+                  name="classroom"
+                  placeholder="Class"
+                  fullWidth
+                >
+                  <option value="">Choose Class</option>
                   {students.map((room) => (
                     <option value={room._id}>
                       {room.classroom} "{room.section}"
@@ -131,7 +139,7 @@ export default function NewStudent() {
                   margin="normal"
                   fullWidth
                 />
-                <br/>
+                <br />
                 <Field
                   component={TextField}
                   name="phone"
@@ -151,7 +159,7 @@ export default function NewStudent() {
                   margin="normal"
                   fullWidth
                 /> */}
-                <br/>
+                <br />
                 <Field
                   component={TextField}
                   name="email"
@@ -161,7 +169,7 @@ export default function NewStudent() {
                   margin="normal"
                   fullWidth
                 />
-                <br/>
+                <br />
                 <Button
                   type="submit"
                   variant="contained"
