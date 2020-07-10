@@ -1,20 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout";
-import {
-  makeStyles,
-  Button,
-  Box,
-  Typography,
-} from "@material-ui/core";
-import { Form, Field, Formik, yupToFormErrors} from "formik";
-import { TextField, Select} from "formik-material-ui";
+import { makeStyles, Button, Box, Typography } from "@material-ui/core";
+import { Form, Field, Formik, yupToFormErrors } from "formik";
+import { TextField, Select } from "formik-material-ui";
 import * as Yup from "yup";
 import Axios from "axios";
-    
+
 const classStyle = makeStyles((theme) => ({
   form: {
     width: "100%",
-    padding: theme.spacing(5)
+    padding: theme.spacing(5),
   },
   headingText: {
     display: "inline-block",
@@ -24,12 +19,12 @@ const classStyle = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
   formDropdown: {
-      width: "100%",    
-      padding: theme.spacing(2),
+    width: "100%",
+    padding: theme.spacing(2),
   },
   typo: {
-      margin: theme.spacing(2, 0, 2, 0)
-  }
+    margin: theme.spacing(2, 0, 2, 0),
+  },
 }));
 
 export default function NewNotice() {
@@ -46,22 +41,7 @@ export default function NewNotice() {
     // classroom: "",
   };
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const { data } = await Axios.get("http://localhost:30022/class", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
-        setStudent(data);
-      } catch (e) {
-        throw e;
-      }
-    })();
-  }, []);
-
-   const onSubmit = async (
+  const onSubmit = async (
     values,
     { setSubmitting, resetForm, setFieldError }
   ) => {
@@ -71,6 +51,7 @@ export default function NewNotice() {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
+      alert("Sucess");
       resetForm();
     } catch (e) {
       setSubmitting(false);
@@ -81,14 +62,11 @@ export default function NewNotice() {
     } catch (error) {}
   };
 
-
   const validationSchema = Yup.object({
     // "noticeType": Yup.string().required("Notice type is required"),
-    "title": Yup.string().required("Title type is required"),
-    "desc": Yup.string().required("Title type is required"),
-    "date": Yup.string().required("Date type is required"),
-    "time": Yup.string().required("Time type is required"),
-    "venue": Yup.string().required("Venue type is required"),
+    title: Yup.string().required("Title type is required"),
+    desc: Yup.string().required("Title type is required"),
+    date: Yup.string().required("Date type is required"),
   });
 
   return (
@@ -111,14 +89,30 @@ export default function NewNotice() {
           {(formik) => {
             return (
               <Form className={classes.form}>
-                <Typography className = {classes.typo}>Notice Type</Typography>
-                <Field fullWidth component="Select" name="noticeType" placeholder="Class" className = {classes.formDropdown}>
-                    <option aria-label="None" value="Academic">Academic</option>
-                    <option aria-label="None" value="Holiday">Holiday</option>
-                    <option aria-label="None" value="Program">Program</option>
-                    <option aria-label="None" value="Important">Important</option>
+                <Typography className={classes.typo}>Notice Type</Typography>
+                <Field
+                  component="select"
+                  name="noticeType"
+                  placeholder="Class"
+                  className={classes.formDropdown}
+                >
+                  <option aria-label="None" value="">
+                    Type of Notice
+                  </option>
+                  <option aria-label="None" value="Academic">
+                    Academic
+                  </option>
+                  <option aria-label="None" value="Holiday">
+                    Holiday
+                  </option>
+                  <option aria-label="None" value="Program">
+                    Program
+                  </option>
+                  <option aria-label="None" value="Important">
+                    Important
+                  </option>
                 </Field>
-                <br/>
+                <br />
                 <Field
                   component={TextField}
                   name="title"
@@ -167,7 +161,7 @@ export default function NewNotice() {
                   fullWidth
                 />
                 <br />
-                <Typography className = {classes.typo}>Notice for</Typography>
+                {/* <Typography className={classes.typo}>Notice for</Typography> */}
                 {/* <Field fullWidth component="Select" name="classroom" placeholder="Class" className = {classes.formDropdown}>
                   {students.map((room) => (
                     <option value={room._id}>
@@ -175,7 +169,7 @@ export default function NewNotice() {
                     </option>
                   ))}
                 </Field> */}
-                <br/>
+                <br />
                 <Button
                   type="submit"
                   variant="contained"
