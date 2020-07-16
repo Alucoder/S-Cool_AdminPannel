@@ -1,26 +1,14 @@
 import React, { useState } from "react";
 import Layout from "../../components/Layout";
-import {
-  makeStyles,
-  Container,
-  Button,
-  Box,
-  Grid,
-  Typography,
-  Select,
-} from "@material-ui/core";
+import { makeStyles, Button, Box, Typography } from "@material-ui/core";
 import { Form, Field, Formik } from "formik";
 import MenuItem from "@material-ui/core/MenuItem";
 import * as Yup from "yup";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
 import { TextField } from "formik-material-ui";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
 
 const classStyle = makeStyles((theme) => ({
   subjectMain: {
-    height: "60vh",
     width: "100%",
     borderRadius: 14,
     backgroundColor: "#fff",
@@ -32,6 +20,7 @@ const classStyle = makeStyles((theme) => ({
   },
   formClass: {
     width: "100%",
+    padding: "16px",
   },
   btnClassPost: {
     borderRadius: 14,
@@ -72,15 +61,7 @@ export default function classroom() {
   return (
     <Layout>
       <Box boxShadow={3} alignContent="center" className={classes.subjectMain}>
-        <Typography
-          component="h1"
-          variant="h5"
-          mt="2"
-          className={classes.headingText}
-        >
-          New Class
-        </Typography>
-
+        <h1 style={{ paddingTop: 8 }}>New Class</h1>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -89,34 +70,34 @@ export default function classroom() {
           {(formik) => {
             return (
               <Form className={classes.formClass}>
-                <div>
-                  <Field placeholder="Class" name="class" as="select">
-                    <option value={0}>Everyone</option>
-                    <option value={1}>One</option>
-                    <option value={2}>Two</option>
-                    <option value={3}>Three</option>
-                    <option value={4}>Four</option>
-                    <option value={5}>Five</option>
-                    <option value={6}>Six</option>
-                    <option value={7}>Seven</option>
-                    <option value={8}>Eight</option>
-                    <option value={9}>Nine</option>
-                  </Field>
-                </div>
+                <Field
+                  placeholder="Class"
+                  name="class"
+                  as="select"
+                  className={classes.formClass}
+                >
+                  <option value="">Choose Class</option>
+                  <option value={1}>One</option>
+                  <option value={2}>Two</option>
+                  <option value={3}>Three</option>
+                  <option value={4}>Four</option>
+                  <option value={5}>Five</option>
+                  <option value={6}>Six</option>
+                  <option value={7}>Seven</option>
+                  <option value={8}>Eight</option>
+                  <option value={9}>Nine</option>
+                </Field>
                 <br />
-                <FormControl>
-                  <Field
-                    component={TextField}
-                    name="section"
-                    type="text"
-                    placeholder="Section"
-                    variant="outlined"
-                    margin="normal"
-                    required
-                    autoComplete="email"
-                    className={classes.txtSection}
-                  />
-                </FormControl>
+                <Field
+                  component={TextField}
+                  name="section"
+                  type="text"
+                  placeholder="Section"
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                />
                 <Typography variant="subtitle1" color="error">
                   {formik.errors.general}
                 </Typography>
@@ -124,7 +105,7 @@ export default function classroom() {
                   type="submit"
                   variant="contained"
                   color="primary"
-                  // disabled={!formik.isValid || formik.isSubmitting}
+                  disabled={!formik.isValid || formik.isSubmitting}
                   className={classes.btnClassPost}
                 >
                   Post
