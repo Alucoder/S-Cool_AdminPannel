@@ -115,7 +115,8 @@ export default function NewNotice() {
                 <Field fullWidth component="Select" name="noticeType" placeholder="Class" className = {classes.formDropdown}>
                     <option aria-label="None" value="Academic">Academic</option>
                     <option aria-label="None" value="Holiday">Holiday</option>
-                    <option aria-label="None" value="Program">Program</option>
+                    <option aria-label="None" value="Events">Events</option>
+                    <option aria-label="None" value="Programms">Programms</option>
                     <option aria-label="None" value="Important">Important</option>
                 </Field>
                 <br/>

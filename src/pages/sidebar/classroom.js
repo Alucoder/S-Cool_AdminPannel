@@ -91,7 +91,7 @@ export default function classroom() {
               <Form className={classes.formClass}>
                 <div>
                   <Field placeholder="Class" name="class" as="select">
-                    <option value={1}>Everyone</option>
+                    <option value={0}>Everyone</option>
                     <option value={1}>One</option>
                     <option value={2}>Two</option>
                     <option value={3}>Three</option>
