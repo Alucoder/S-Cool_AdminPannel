@@ -54,7 +54,6 @@ export default function classroom() {
   };
 
   const validationSchema = Yup.object({
-    classroom: Yup.string().required("class is required"),
     section: Yup.string().required("section is required"),
   });
 
