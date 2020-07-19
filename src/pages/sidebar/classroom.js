@@ -71,7 +71,7 @@ export default function classroom() {
               <Form className={classes.formClass}>
                 <Field
                   placeholder="Class"
-                  name="class"
+                  name="classroom"
                   as="select"
                   className={classes.formClass}
                 >
