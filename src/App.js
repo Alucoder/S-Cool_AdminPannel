@@ -8,12 +8,13 @@ import NoMatch from "./components/NoMatch";
 import PrivateRoute from "./utils/PrivateRoute";
 import ClassRoom from "./pages/sidebar/classroom";
 import Subject from "./pages/sidebar/Subject";
-import Student from './pages/sidebar/Students';
-import Teacher from './pages/sidebar/Teachers'
-import newStudent from './pages/newstudent';
-import studentInfo from './pages/studentinfo';
-import newTeacher from './pages/newteacher';
-import notice from './pages/notice';
+import Student from "./pages/sidebar/Students";
+import Teacher from "./pages/sidebar/Teachers";
+import newStudent from "./pages/newstudent";
+import studentInfo from "./pages/studentinfo";
+import newTeacher from "./pages/newteacher";
+import Teacherinfo from "./pages/Teacherinfo";
+import notice from "./pages/notice";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/newstudent" component={newStudent} />
           <Route path="/studentsinfo" component={studentInfo} />
           <Route path="/newteacher" component={newTeacher} />
+          <Route path="/teacherinfo" component={Teacherinfo} />
           <Route path="/notice" component={notice} />
 
           <Route>

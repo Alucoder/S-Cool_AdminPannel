@@ -38,7 +38,7 @@ export default function Students() {
               <GroupAddIcon />
             </Paper>
           </Grid>
-          <Grid item xs={4} button component={Link} to="/student-info">
+          <Grid item xs={4} button component={Link} to="/teacherinfo">
             <Paper className={classes.gridItemNavigate}>
               <FaceIcon />
               <div>Teacher Info</div>
