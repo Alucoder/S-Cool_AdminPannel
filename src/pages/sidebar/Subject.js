@@ -60,7 +60,7 @@ export default function Subject() {
   }, []);
 
   const initialValues = {
-    name: "",
+    subName: "",
     subjectDetail: "",
     classroom: "",
     teacher: "",
@@ -87,10 +87,8 @@ export default function Subject() {
   };
 
   const validationSchema = Yup.object({
-    name: Yup.string().required("Required"),
+    subName: Yup.string().required("Required"),
     subjectDetail: Yup.string().required("Required"),
-    classroom: Yup.string().required("Required"),
-    teacher: Yup.string().required("Required"),
   });
 
   return (
@@ -108,7 +106,7 @@ export default function Subject() {
               <Form className={classes.formClass}>
                 <Field
                   component={TextField}
-                  name="fname"
+                  name="subName"
                   type="text"
                   label="Subject Name"
                   variant="outlined"
@@ -154,7 +152,6 @@ export default function Subject() {
                   component={TextField}
                   margin="normal"
                   fullWidth
-                  autoFocus
                 />
                 <Button
                   type="submit"

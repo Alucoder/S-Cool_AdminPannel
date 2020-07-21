@@ -33,7 +33,7 @@ export default function NewStudent() {
     classroom: "",
     userid: "",
     email: "",
-    admin: "student",
+    admin: "user",
     phone: "",
   };
 
