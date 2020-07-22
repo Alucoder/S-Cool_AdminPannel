@@ -9,6 +9,10 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Layout from "../components/Layout";
 import Axios from "axios";
+
+import Grid from "@material-ui/core/Grid";
+
+import DeleteTwoToneIcon from "@material-ui/icons/DeleteTwoTone";
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -40,7 +44,7 @@ export default function Teacherinfo() {
     const userData = async () => {
       try {
         const { data } = await Axios.get(
-          "http://localhost:30022/users/students",
+          "http://localhost:30022/users/userteacher",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -61,11 +65,12 @@ export default function Teacherinfo() {
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>Student</StyledTableCell>
+              <StyledTableCell>Teacher</StyledTableCell>
               <StyledTableCell align="right">User Id</StyledTableCell>
               <StyledTableCell align="right">Classroom</StyledTableCell>
               <StyledTableCell align="right">Email</StyledTableCell>
               <StyledTableCell align="right">Phone</StyledTableCell>
+              <StyledTableCell align="right">Actions</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -75,9 +80,16 @@ export default function Teacherinfo() {
                   {row.fname}
                 </StyledTableCell>
                 <StyledTableCell align="right">{row.userid}</StyledTableCell>
-                <StyledTableCell align="right">{row.classroom}</StyledTableCell>
+                <StyledTableCell align="right">
+                  {row.classroom.classroom} "{row.classroom.section}"
+                </StyledTableCell>
                 <StyledTableCell align="right">{row.email}</StyledTableCell>
                 <StyledTableCell align="right">{row.phone}</StyledTableCell>
+                <StyledTableCell align="right">
+                  <Grid item xs={8}>
+                    <DeleteTwoToneIcon />
+                  </Grid>
+                </StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>

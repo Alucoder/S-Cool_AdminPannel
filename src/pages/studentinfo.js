@@ -78,8 +78,10 @@ export default function CustomizedTables() {
                 <StyledTableCell component="th" scope="row">
                   {row.fname}
                 </StyledTableCell>
-                <StyledTableCell align="right">{row.userid}</StyledTableCell>
-                <StyledTableCell align="right">{row.classroom}</StyledTableCell>
+                <StyledTableCell align="right">{row.userid}</StyledTableCell>{" "}
+                <StyledTableCell align="right">
+                  {row.classroom.classroom} "{row.classroom.section}"
+                </StyledTableCell>
                 <StyledTableCell align="right">{row.email}</StyledTableCell>
                 <StyledTableCell align="right">{row.phone}</StyledTableCell>
                 <StyledTableCell align="right">

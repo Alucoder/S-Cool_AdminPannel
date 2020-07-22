@@ -114,11 +114,12 @@ export default function NewStudent() {
                 />
                 <br />
                 <Field
-                  component={Select}
-                  fullWidth
+                  component="select"
+                  style={{ width: "100% ", padding: 10 }}
                   name="classroom"
                   placeholder="Class"
                 >
+                  <option value="">Choose Class</option>
                   {students.map((room) => (
                     <option value={room._id}>
                       {room.classroom} "{room.section}"
